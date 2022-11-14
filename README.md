@@ -8,7 +8,7 @@ A blue/green deployment is a deployment strategy in which you create two separat
 
 ## Iac with Ansible
 
-![Ansible](images/Ansible.png)
+![Ansible](images/AnsibleDiagram.png)
 
 ### What is IaC?
 
