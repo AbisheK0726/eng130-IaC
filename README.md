@@ -1,6 +1,14 @@
 # Ansible and IaC
 
+## Blue and Green Deployment
+
+![Blue and Green Deployment](blue-green.png)
+
+A blue/green deployment is a deployment strategy in which you create two separate, but identical environments. You then switch between the two environments, one at a time. This strategy is also known as a two-tier deployment.
+
 ## Iac with Ansible
+
+![Ansible](Ansible.png)
 
 ### What is IaC?
 
