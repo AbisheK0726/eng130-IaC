@@ -47,13 +47,3 @@ Provide the default password for vagrant user `vagrant`
 [db]
 192.168.33.11 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
 ```
-
-## Adhoc Commands
-
-```bash
-ansible all -a "uname -a"
-ansible all -m ping     # ping all hosts
-ansible web -m ping     # ping web hosts
-ansible db -m ping      # ping db hosts
-ansible all -a "free"   # Find free memory 
-```

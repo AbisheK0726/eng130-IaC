@@ -1,12 +1,4 @@
 Vagrant.configure("2") do |config|
-    # creating are Ansible controller
-      config.vm.define "controller" do |controller|
-        
-       controller.vm.box = "bento/ubuntu-18.04" 
-       controller.vm.hostname = 'controller'
-       controller.vm.network :private_network, ip: "192.168.33.12" 
-       # config.hostsupdater.aliases = ["development.controller"]       
-      end 
 
     # creating first VM called web  
       config.vm.define "web" do |web|
@@ -26,6 +18,17 @@ Vagrant.configure("2") do |config|
         db.vm.network :private_network, ip: "192.168.33.11"    
         #config.hostsupdater.aliases = ["development.db"]     
       end
+
+      # creating are Ansible controller
+      config.vm.define "controller" do |controller|
+        
+        controller.vm.box = "bento/ubuntu-18.04" 
+        controller.vm.hostname = 'controller'
+        controller.vm.network :private_network, ip: "192.168.33.12"
+        controller.vm.provision "shell", path: "provision.sh"
+
+        # config.hostsupdater.aliases = ["development.controller"]       
+       end 
     
     
     end
