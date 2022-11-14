@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
         controller.vm.box = "bento/ubuntu-18.04" 
         controller.vm.hostname = 'controller'
         controller.vm.network :private_network, ip: "192.168.33.12"
+        controller.vm.synced_folder "./newHosts", "/home/vagrant/", disabled: true
         controller.vm.provision "shell", path: "provision.sh"
 
         # config.hostsupdater.aliases = ["development.controller"]       
@@ -32,3 +33,5 @@ Vagrant.configure("2") do |config|
     
     
     end
+
+    web_db_provision.sh

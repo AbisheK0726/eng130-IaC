@@ -47,3 +47,31 @@ Provide the default password for vagrant user `vagrant`
 [db]
 192.168.33.11 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
 ```
+
+### Ping from Controller
+
+Ping the other VMs from controller to check the connectivity
+
+```bash
+ansible all -m ping
+```
+
+Expected Output:
+
+```bash
+192.168.33.10 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+192.168.33.11 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+```
