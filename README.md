@@ -6,6 +6,8 @@
 
 A blue/green deployment is a deployment strategy in which you create two separate, but identical environments. You then switch between the two environments, one at a time. This strategy is also known as a two-tier deployment.
 
+Green is the new environment, and blue is the old environment. The new environment is created and tested before it is switched to. The old environment is then decommissioned.
+
 ### Benefits of Blue/Green Deployment
 
 * You can test new features in a production-like environment before you deploy them to production.
