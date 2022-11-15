@@ -25,6 +25,13 @@ A blue/green deployment is a deployment strategy in which you create two separat
 
 Infrastructure as Code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.
 
+#### Benefits of IaC
+
+* You can automate the provisioning of your infrastructure.
+* You can version control your infrastructure.
+* You can test your infrastructure.
+* You can automate the deployment of your infrastructure.
+
 ### What is Ansible?
 
 Ansible is an open-source software provisioning, configuration management, and application-deployment tool enabling infrastructure as code. It runs on many Unix-like systems, and can configure both Unix-like systems as well as Microsoft Windows.
