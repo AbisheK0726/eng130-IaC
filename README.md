@@ -42,6 +42,8 @@ Ansible is an open-source software provisioning, configuration management, and a
 
 * **Agentless** - Ansible does not require any software to be installed on remote nodes. It uses SSH (or other remote communication protocols) for communication and does not leave any software or services running on remote nodes.
 
+* **Easy to use** - Ansible is easy to use and does not require any special knowledge of the remote systems. It uses YAML for describing the automation jobs.
+
 ### IaC configuration Management
 
 * **Configuration Management** - Ansible models your IT infrastructure by describing how all of your systems inter-relate, rather than just managing one system at a time. It tracks and manages changes, and can roll them back as needed.
