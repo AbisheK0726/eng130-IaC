@@ -82,3 +82,86 @@ ansible all -a "free"   # Find free memory
 ansible all -m copy -a "src=/etc/hosts dest=/home/vagrant"
 ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts owner=vagrant group=vagrant mode=0644" # copy with permissions
 ```
+
+## YAML
+
+### What is YAML?
+
+YAML is a human-readable data serialization language. It is commonly used for configuration files and in applications where data is being stored or transmitted.
+
+### YAML Syntax
+
+* YAML is case sensitive.
+* YAML uses indentation to represent scope.
+* YAML uses three dashes (---) to indicate the start of a document, and three dots (...) to indicate the end of a document.
+* YAML supports two data structures: hashes and arrays.
+
+### Configuration Ngix with Ansible using YAML
+
+create a file called `nginx.yml` and add the following content
+
+```yaml
+---
+
+- hosts: web
+
+  gather_facts: yes
+  become: true
+  tasks:
+    - name: Install Nginx in Web Server
+      apt: pkg=nginx state=present # could be absent to remove the package
+```
+
+### Start Playbooks
+
+```bash
+sudo ansible-playbook nginx.yml
+sudo ansible-playbook nginx.yml -vvv # verbose
+sudo ansible-playbook nginx.yml --check # check mode
+```
+
+### Check if Nginx is installed
+
+```bash
+sudo ansible web -a "sudo systemctl status nginx"
+```
+
+### Install nodejs
+
+```yaml
+---
+- hosts: web
+  gather_facts: yes
+  become: true
+  tasks:
+  - name: Install nodejs
+    apt: pkg=nodejs state=present
+
+  - name: Install NPM
+    apt: pkg=npm state=present
+```
+
+### Check if nodejs is installed
+
+```bash
+sudo ansible web -a "node -v"
+sudo ansible web -a "npm -v"
+```
+
+### Install MongoDB
+
+```yaml
+---
+- hosts: db
+  gather_facts: yes
+  become: true
+  tasks:
+    - name: Install MongoDB
+      apt: pkg=mongodb state=present
+```
+
+### Check if MongoDB is installed
+
+```bash
+sudo ansible db -a "sudo systemctl status mongodb"
+```

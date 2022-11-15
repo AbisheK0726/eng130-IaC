@@ -1,0 +1,11 @@
+# YAML Start
+---
+
+- hosts: web
+
+  gather_facts: yes
+  become: true
+  
+  tasks:
+    - name: Install Nginx in Web Server
+      apt: pkg=nginx state=present

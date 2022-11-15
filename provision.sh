@@ -27,4 +27,4 @@ echo -e '\033[0;32m' "=======[COMPLETE]=======" '\033[0m'
 
 # Configuring Ansible
 echo -e '\033[0;34m' "Configuring Ansible Hosts files" '\033[0m'
-sudo cp -f /home/vagrant/newHosts /etc/ansible/
+sudo cp -f /home/vagrant/newHosts/hosts /etc/ansible/
