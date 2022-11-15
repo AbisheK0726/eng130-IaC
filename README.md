@@ -6,6 +6,17 @@
 
 A blue/green deployment is a deployment strategy in which you create two separate, but identical environments. You then switch between the two environments, one at a time. This strategy is also known as a two-tier deployment.
 
+### Benefits of Blue/Green Deployment
+
+* You can test new features in a production-like environment before you deploy them to production.
+* You can deploy new features to a small subset of users before you deploy them to all users.
+* You can roll back to the previous environment if the new environment is not working as expected.
+
+### Drawbacks of Blue/Green Deployment
+
+* You need to maintain two environments, which can be expensive.
+* You need to switch between the two environments, which can be time-consuming.
+
 ## Iac with Ansible
 
 ![Ansible](images/AnsibleDiagram.png)
@@ -20,11 +31,11 @@ Ansible is an open-source software provisioning, configuration management, and a
 
 ### Benifits Ansible?
 
-- **Agentless** - Ansible does not require any software or daemons to be installed on remote nodes. It uses SSH (or other remote communication protocols) for communication and does not leave any software or services running on remote nodes.
+* **Agentless** - Ansible does not require any software or daemons to be installed on remote nodes. It uses SSH (or other remote communication protocols) for communication and does not leave any software or services running on remote nodes.
 
 ### IaC configuration Management
 
-- **Configuration Management** - Ansible models your IT infrastructure by describing how all of your systems inter-relate, rather than just managing one system at a time. It tracks and manages changes, and can roll them back as needed.
+* **Configuration Management** - Ansible models your IT infrastructure by describing how all of your systems inter-relate, rather than just managing one system at a time. It tracks and manages changes, and can roll them back as needed.
 
 ## Ansible
 
@@ -35,6 +46,10 @@ An inventory is a list of hosts that Ansible manages. It is a simple text file t
 ### What is Roles?
 
 A role is a set of Ansible tasks, handlers, and variables that are used together. Roles are a way of automatically loading related vars_files, tasks, and handlers together. Roles can be shared and reused.
+
+### What is Playbook?
+
+A playbook is a list of tasks to be executed on a remote host. Playbooks are written in YAML format and have a simple structure that allows you to easily organize your automation jobs into logical groups.
 
 ### Setup
 
