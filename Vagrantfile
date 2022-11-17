@@ -29,8 +29,7 @@ Vagrant.configure("2") do |config|
         controller.vm.synced_folder "./app", "/home/vagrant/app"
         controller.vm.synced_folder "./environment", "/home/vagrant/environment"
         controller.vm.provision "shell", path: "provision.sh"
-
-        # config.hostsupdater.aliases = ["development.controller"]       
+      
        end 
     
     end

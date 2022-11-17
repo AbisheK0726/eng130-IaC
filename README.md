@@ -165,3 +165,101 @@ sudo ansible web -a "npm -v"
 ```bash
 sudo ansible db -a "sudo systemctl status mongodb"
 ```
+
+## Hybrid Setup
+
+### Pre-requisites
+
+* Need to intsall `python 3` - `sudo apt install python3`
+* Need to install `pip3` - `sudo apt install python3-pip`
+* Need to intsall `boto3` - `pip3 install boto boto3`
+* Need to intsall `awscli` - `pip3 install awscli`
+
+### Make sure you have the following folder
+
+```bash
+cd /etc/ansible/
+mkdir group_vars
+mkdir all
+```
+
+### Create a file called `all.yml` and add the following content
+
+```bash
+sudo ansible-vault create pass.yml
+```
+
+```vim
+aws_access_key: "EXAMPLE"
+aws_secrey_key: "EXAMPLEKEY"
+```
+
+### Create new ssh key
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "eng130_ansible" -f ~/.ssh/eng130_ansible
+```
+
+### Copy and Paste Eng130.pem
+
+From local machine to the server
+
+```bash
+cat eng130.pem
+```
+
+And copy the content and paste it in the file `eng130.pem` in the server
+
+### Change the permission of the key
+
+```bash
+chmod 400 ~/.ssh/eng130.pem
+```
+
+### Add AWs host to the ansible Hosts file
+
+```ymal
+[aws]
+ec2-instance ansible_host=ec2-ip ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/eng130
+```
+
+## Infrastructure as Code - Orchestration with Terraform
+
+### What is Terraform?
+
+Terraform is an open-source infrastructure as code software tool created by HashiCorp. Users define and provide data center infrastructure using a declarative configuration language known as HashiCorp Configuration Language, or optionally JSON.
+
+### Benefits of Terraform
+
+* **Infrastructure as Code** - Terraform codifies cloud APIs into declarative configuration files. Infrastructure is described using a high-level configuration syntax. This allows a blueprint of your data center to be versioned and treated as you would any other code. Additionally, infrastructure can be shared and re-used.
+
+* **Execution Plans** - Terraform has a "planning" step where it generates an *execution plan*. The execution plan shows what Terraform will do when you call apply. This lets you avoid any surprises when Terraform manipulates infrastructure.
+
+* **Resource Graph** - Terraform builds a graph of all your resources, and parallelizes the creation and modification of any non-dependent resources. Because of this, Terraform builds infrastructure as efficiently as possible, and operators get insight into dependencies in their infrastructure.
+
+* **Change Automation** - Complex changesets can be applied to your infrastructure with minimal human interaction
+
+### Terraform Use Cases
+
+* **Provisioning** - Terraform can manage existing and popular service providers as well as custom in-house solutions.
+
+* **Management** - Terraform can manage existing and popular service providers as well as custom in-house solutions.
+
+* **Versioning** - Terraform codifies APIs into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.
+
+* **Networking** - Terraform can model complex interdependent infrastructure resources.
+
+* **Secrets Management** - Terraform can integrate with a variety of external data sources to pull in information that is sensitive, such as passwords or keys.
+
+### Who uses Terraform?
+
+* **Amazon**
+* **Cisco**
+* **Docker**
+* **Google**
+* **Microsoft**
+* **Netflix**
+
+### who owns it?
+
+* **HashiCorp** - HashiCorp is a software company that develops open source tools for service discovery, secure configuration, and orchestration. The company's flagship product, Terraform, is a tool for building, changing, and versioning infrastructure safely and efficiently.

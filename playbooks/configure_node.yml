@@ -32,17 +32,15 @@
       src: /home/vagrant/environment
       dest: /home/vagrant
 
-  - name: Add Env varible
-    shell: |
-      echo export DB_HOST=mongodb://192.168.33.11:27017/posts >> .bashrc
-      sudo source .bashrc
-
   - name: Run npm
     shell: |
       cd app
       npm install
       pm2 kill
-      pm2 start app.js
+      pm2 start app.js 
+    environment:
+      DB_HOST: mongodb://192.168.33.11:27017/posts?authSource=admin
+    become_user: root
 
   - name: Seed Database
     shell: |

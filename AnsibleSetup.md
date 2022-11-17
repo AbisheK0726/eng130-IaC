@@ -53,7 +53,7 @@ Provide the default password for vagrant user `vagrant`
 Ping the other VMs from controller to check the connectivity
 
 ```bash
-ansible all -m ping
+sudo ansible all -m ping
 ```
 
 Expected Output:
