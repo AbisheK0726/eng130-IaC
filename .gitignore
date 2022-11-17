@@ -1,1 +1,7 @@
 .vagrant
+eng130_terraform/.terraform
+eng130_terraform/.terraform.lock.hcl
+eng130_terraform/terraform.tfstate
+eng130_terraform/variable.tf
+eng130_terraform/terraform.tfstate.backup
+eng130_terraform\.terraform.tfstate.lock.info
