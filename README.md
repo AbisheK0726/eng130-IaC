@@ -301,3 +301,5 @@ provider "aws" {
 ```bash
 terraform init
 ```
+
+### Terraform Plan
