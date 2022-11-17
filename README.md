@@ -263,3 +263,41 @@ Terraform is an open-source infrastructure as code software tool created by Hash
 ### who owns it?
 
 * **HashiCorp** - HashiCorp is a software company that develops open source tools for service discovery, secure configuration, and orchestration. The company's flagship product, Terraform, is a tool for building, changing, and versioning infrastructure safely and efficiently.
+
+### Terraform Installation
+
+Install Chocolatey
+
+```bash
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+
+Install Terraform
+
+```bash
+choco install terraform
+terraform --version
+```
+
+### Terraform Init
+
+#### Create a folder called `eng130_terraform` and add the following content
+
+```bash
+cd eng130_terraform
+nano main.tf
+```
+
+#### Edit the file `main.tf` and add the following content
+
+```terraform
+provider "aws" {
+  region = "eu-west-1"
+}
+```
+
+#### Initialize Terraform
+
+```bash
+terraform init
+```
