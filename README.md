@@ -166,7 +166,7 @@ sudo ansible web -a "npm -v"
 sudo ansible db -a "sudo systemctl status mongodb"
 ```
 
-## Hybrid Setup
+## Hybrid Setup - Ansible and Vagrant
 
 ### Pre-requisites
 

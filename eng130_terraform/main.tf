@@ -34,7 +34,7 @@ resource "aws_security_group" "eng130_aneese_terraform_sg"{
   description = "eng130_aneese_sg"
   vpc_id = aws_vpc.eng130_aneese_my_vpc_terraform.id
 
-# Inbound Rules
+  # Inbound Rules
   # SSH from anywhere
   ingress {
     description = "SSH"
