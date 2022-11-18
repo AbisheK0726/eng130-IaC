@@ -110,6 +110,20 @@ resource "aws_placement_group" "eng13_aneese_tf_pg" {
   strategy = "cluster"
 }
 
+resource "aws_lb" "aws_aneese_lb_tf" {
+  name               = "eng130-aneese-tf-lb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.eng130_aneese_tf_sg.id]
+  subnets            = [aws_subnet.eng130_aneese_tf_subnet.id]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Name = "eng130-aneese-tf-lb"
+  }
+}
+
 # Create a lunch template
 resource "aws_launch_template" "aws_launch_template_tf" {
   name = "aws_launch_template_tf"
@@ -134,27 +148,6 @@ resource "aws_launch_template" "aws_launch_template_tf" {
     tags = {
       Name = "eng130_aneese_tf_app_instance"
     }
-  }
-}
-
-# Create an Auto Scaling Group
-resource "aws_autoscaling_group" "eng130_aneese_tf_asg" {
-  name                      = "aneese-tf-asg"
-  max_size                  = 3
-  min_size                  = 1
-  health_check_grace_period = 300
-  health_check_type         = "ELB"
-  desired_capacity          = 1
-  force_delete              = true
-  vpc_zone_identifier       = [aws_subnet.eng130_aneese_tf_subnet.id]
-  launch_template {
-    id      = aws_launch_template.aws_launch_template_tf.id
-    version = "$Latest"
-  }
-  tag {
-      key                 = "aneese-tf-asg"
-      value               = "eng130_aneese_tf_asg"
-      propagate_at_launch = true
   }
 }
 
@@ -184,3 +177,27 @@ resource "aws_instance" "app_instance_controller" {
 #   }
 #   key_name = var.aws_key_name
 # }
+
+# Create an Auto Scaling Group
+resource "aws_autoscaling_group" "eng130_aneese_tf_asg" {
+  name                      = "aneese-tf-asg"
+  max_size                  = 3
+  min_size                  = 1
+  health_check_grace_period = 300
+  health_check_type         = "ELB"
+  desired_capacity          = 1
+  force_delete              = true
+  vpc_zone_identifier       = [aws_subnet.eng130_aneese_tf_subnet.id]
+  launch_template {
+    id      = aws_launch_template.aws_launch_template_tf.id
+    version = "$Latest"
+  }
+  tag {
+      key                 = "aneese-tf-asg"
+      value               = "eng130_aneese_tf_asg"
+      propagate_at_launch = true
+  }
+}
+
+
+
