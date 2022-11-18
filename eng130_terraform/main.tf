@@ -1,5 +1,4 @@
 # Download Dependencies from AWS
-
 provider "aws"{
   region = "eu-west-1"
 }
@@ -28,7 +27,6 @@ resource "aws_subnet" "eng130_aneese_tf_subnet"{
 }
 
 # Create a Security Group
-
 resource "aws_security_group" "eng130_aneese_tf_sg"{
   name = "eng130_aneese_sg"
   description = "eng130_aneese_sg"
@@ -78,7 +76,6 @@ resource "aws_security_group" "eng130_aneese_tf_sg"{
 }
 
 # Create Internet Gateway
-
 resource "aws_internet_gateway" "eng130_aneese_tf_igw"{
   vpc_id = aws_vpc.eng130_aneese_my_vpc_tf.id
 
@@ -88,7 +85,6 @@ resource "aws_internet_gateway" "eng130_aneese_tf_igw"{
 }
 
 # Create Route Table
-
 resource "aws_route_table" "eng130_aneese_tf_rt"{
   vpc_id = aws_vpc.eng130_aneese_my_vpc_tf.id
 
@@ -103,7 +99,6 @@ resource "aws_route_table" "eng130_aneese_tf_rt"{
 }
 
 # Create Route Table Association
-
 resource "aws_route_table_association" "eng130_aneese_tf_rt_association"{
   subnet_id = aws_subnet.eng130_aneese_tf_subnet.id
   route_table_id = aws_route_table.eng130_aneese_tf_rt.id
